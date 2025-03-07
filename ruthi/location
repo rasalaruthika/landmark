@@ -1,0 +1,10 @@
+import gps
+
+# Connect to GPS device
+session = gps.gps(mode=gps.WATCH_ENABLE)
+report = session.next()
+
+if report['class'] == 'TPV':
+    latitude = getattr(report, 'lat', "Unknown")
+    longitude = getattr(report, 'lon', "Unknown")
+    print(f"GPS Coordinates: {latitude}, {longitude}")
